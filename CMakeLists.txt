@@ -4,6 +4,7 @@ SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
 include(googletest.cmake)
+include(gcovr.cmake)
 
 set(SRC src/main.cpp)
 set(TESTS src/test_main.cpp)
