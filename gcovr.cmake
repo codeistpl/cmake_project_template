@@ -18,8 +18,10 @@ if(USE_GCOV)
 
     add_custom_command(OUTPUT _run_gcovr_parser
         POST_BUILD
-        COMMAND ${GCOVR} -r ${CMAKE_SOURCE_DIR}/src --object-dir= ${CMAKE_BINARY_DIR}
-        COMMAND ${GCOVR} -r ${CMAKE_SOURCE_DIR}/src --object-dir= ${CMAKE_BINARY_DIR} --branches --exclude-unreachable-branches
+        COMMAND ${GCOVR} -r ${CMAKE_SOURCE_DIR}/src --object-dir=
+        ${CMAKE_BINARY_DIR} -e test_*
+        COMMAND ${GCOVR} -r ${CMAKE_SOURCE_DIR}/src --object-dir=
+        ${CMAKE_BINARY_DIR} --branches --exclude-unreachable-branches -e test_*
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
     add_custom_target (coverage DEPENDS _run_gcovr_parser)
 endif(USE_GCOV)
