@@ -1,7 +1,19 @@
 get_filename_component(MODULE_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME)
-set(SRC main.cpp)
-set(TESTS test_main.cpp)
 
+file(GLOB SRC ./*.cpp)
+list(LENGTH SRC SRC_SIZE)
+file(GLOB TESTS ./*_test.cpp)
+list(LENGTH TESTS TESTS_SIZE)
+file(GLOB MOCKS ./*_mock.cpp)
+list(LENGTH MOCKS MOCKS_SIZE)
+
+list(REMOVE_ITEM SRC ${TESTS})
+list(REMOVE_ITEM SRC ${MOCKS})
+
+
+message("src" ${SRC})
+message("tests" ${TESTS})
+message("mocks" ${MOCKS})
 add_library(${MODULE_NAME} STATIC ${SRC})
 add_executable(${MODULE_NAME}_tests ${TESTS})
 target_link_libraries(${MODULE_NAME}_tests gtest_main gtest pthread)
