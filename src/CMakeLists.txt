@@ -1,2 +1,3 @@
 add_subdirectory(module_name)
 add_subdirectory(module_name2)
+add_subdirectory(algorithms)
