@@ -18,7 +18,6 @@ namespace algorithms {
         if (opening == '(' && closing == ')') return true;
         return false;
     }
-    
     bool check_brace_correctness(const std::string& str){
         std::stack<char> braces;
         for (char c : str){
