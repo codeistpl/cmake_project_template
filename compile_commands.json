@@ -1,0 +1,140 @@
+[
+{
+    "arguments": [
+        "clang++",
+        "-c",
+        "-m64",
+        "-target",
+        "x86_64-linux-gnu",
+        "-std=gnu++14",
+        "-fcxx-exceptions",
+        "-fexceptions",
+        "-DBOOST_TYPE_INDEX_CTTI_USER_DEFINED_PARSING=(39, 1, true, \"T = \")",
+        "-fPIC",
+        "-I",
+        "/home/hihip/work/build-template_cmake_project-Desktop-Default/googletest-prefix/src/googletest/googletest/include",
+        "-I",
+        "/home/hihip/work/build-template_cmake_project-Desktop-Default/googletest-prefix/src/googletest/googlemock/include",
+        "-x",
+        "c++",
+        "/home/hihip/work/template_cmake_project/src/module_name/myclass.cpp"
+    ],
+    "directory": "/home/hihip/work/build-template_cmake_project-Desktop-Default",
+    "file": "/home/hihip/work/template_cmake_project/src/module_name/myclass.cpp"
+},
+{
+    "arguments": [
+        "clang++",
+        "-c",
+        "-m64",
+        "-target",
+        "x86_64-linux-gnu",
+        "-std=gnu++14",
+        "-fcxx-exceptions",
+        "-fexceptions",
+        "-DBOOST_TYPE_INDEX_CTTI_USER_DEFINED_PARSING=(39, 1, true, \"T = \")",
+        "-fPIC",
+        "-I",
+        "/home/hihip/work/build-template_cmake_project-Desktop-Default/googletest-prefix/src/googletest/googletest/include",
+        "-I",
+        "/home/hihip/work/build-template_cmake_project-Desktop-Default/googletest-prefix/src/googletest/googlemock/include",
+        "-x",
+        "c++",
+        "/home/hihip/work/template_cmake_project/src/module_name/myclass_test.cpp"
+    ],
+    "directory": "/home/hihip/work/build-template_cmake_project-Desktop-Default",
+    "file": "/home/hihip/work/template_cmake_project/src/module_name/myclass_test.cpp"
+},
+{
+    "arguments": [
+        "clang++",
+        "-c",
+        "-m64",
+        "-target",
+        "x86_64-linux-gnu",
+        "-std=gnu++14",
+        "-fcxx-exceptions",
+        "-fexceptions",
+        "-DBOOST_TYPE_INDEX_CTTI_USER_DEFINED_PARSING=(39, 1, true, \"T = \")",
+        "-fPIC",
+        "-I",
+        "/home/hihip/work/build-template_cmake_project-Desktop-Default/googletest-prefix/src/googletest/googletest/include",
+        "-I",
+        "/home/hihip/work/build-template_cmake_project-Desktop-Default/googletest-prefix/src/googletest/googlemock/include",
+        "-x",
+        "c++",
+        "/home/hihip/work/template_cmake_project/src/module_name2/main.cpp"
+    ],
+    "directory": "/home/hihip/work/build-template_cmake_project-Desktop-Default",
+    "file": "/home/hihip/work/template_cmake_project/src/module_name2/main.cpp"
+},
+{
+    "arguments": [
+        "clang++",
+        "-c",
+        "-m64",
+        "-target",
+        "x86_64-linux-gnu",
+        "-std=gnu++14",
+        "-fcxx-exceptions",
+        "-fexceptions",
+        "-DBOOST_TYPE_INDEX_CTTI_USER_DEFINED_PARSING=(39, 1, true, \"T = \")",
+        "-fPIC",
+        "-I",
+        "/home/hihip/work/build-template_cmake_project-Desktop-Default/googletest-prefix/src/googletest/googletest/include",
+        "-I",
+        "/home/hihip/work/build-template_cmake_project-Desktop-Default/googletest-prefix/src/googletest/googlemock/include",
+        "-x",
+        "c++",
+        "/home/hihip/work/template_cmake_project/src/module_name2/test_main.cpp"
+    ],
+    "directory": "/home/hihip/work/build-template_cmake_project-Desktop-Default",
+    "file": "/home/hihip/work/template_cmake_project/src/module_name2/test_main.cpp"
+},
+{
+    "arguments": [
+        "clang++",
+        "-c",
+        "-m64",
+        "-target",
+        "x86_64-linux-gnu",
+        "-std=gnu++14",
+        "-fcxx-exceptions",
+        "-fexceptions",
+        "-DBOOST_TYPE_INDEX_CTTI_USER_DEFINED_PARSING=(39, 1, true, \"T = \")",
+        "-fPIC",
+        "-I",
+        "/home/hihip/work/build-template_cmake_project-Desktop-Default/googletest-prefix/src/googletest/googletest/include",
+        "-I",
+        "/home/hihip/work/build-template_cmake_project-Desktop-Default/googletest-prefix/src/googletest/googlemock/include",
+        "-x",
+        "c++",
+        "/home/hihip/work/template_cmake_project/src/algorithms/brace_checker.cpp"
+    ],
+    "directory": "/home/hihip/work/build-template_cmake_project-Desktop-Default",
+    "file": "/home/hihip/work/template_cmake_project/src/algorithms/brace_checker.cpp"
+},
+{
+    "arguments": [
+        "clang++",
+        "-c",
+        "-m64",
+        "-target",
+        "x86_64-linux-gnu",
+        "-std=gnu++14",
+        "-fcxx-exceptions",
+        "-fexceptions",
+        "-DBOOST_TYPE_INDEX_CTTI_USER_DEFINED_PARSING=(39, 1, true, \"T = \")",
+        "-fPIC",
+        "-I",
+        "/home/hihip/work/build-template_cmake_project-Desktop-Default/googletest-prefix/src/googletest/googletest/include",
+        "-I",
+        "/home/hihip/work/build-template_cmake_project-Desktop-Default/googletest-prefix/src/googletest/googlemock/include",
+        "-x",
+        "c++",
+        "/home/hihip/work/template_cmake_project/src/algorithms/brace_checker_test.cpp"
+    ],
+    "directory": "/home/hihip/work/build-template_cmake_project-Desktop-Default",
+    "file": "/home/hihip/work/template_cmake_project/src/algorithms/brace_checker_test.cpp"
+}
+]
