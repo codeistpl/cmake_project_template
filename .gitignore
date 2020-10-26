@@ -1,3 +1,2 @@
-*.user.*
-*.user
 .build
+.vs*
