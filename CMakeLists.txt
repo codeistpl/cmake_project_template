@@ -1,5 +1,5 @@
 project(template_cmake_project)
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.17)
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake_modules/gcovr.cmake)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
