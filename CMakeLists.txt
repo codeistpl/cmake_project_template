@@ -1,5 +1,6 @@
 project(template_cmake_project)
 cmake_minimum_required(VERSION 3.27)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake_modules/gcovr.cmake)
 

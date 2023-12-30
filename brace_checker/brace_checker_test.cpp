@@ -5,7 +5,7 @@ using namespace algorithms;
 
 class brace_checker_test : public ::testing::Test {
   public:
-    //brace_checker_test() = default;
+    // brace_checker_test() = default;
 };
 
 TEST_F(brace_checker_test, check_braces_on_empty_string) {
