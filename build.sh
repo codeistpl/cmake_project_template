@@ -4,5 +4,5 @@ if [ ! -d ".build" ]; then
 fi
 
 cd .build
-cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake   
+cmake .. -DCMAKE_BUILD_TYPE=Debug
 cmake --build .

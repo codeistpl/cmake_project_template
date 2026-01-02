@@ -1,10 +1,8 @@
 ---
-Checks:          'cppcoreguidelines-*,performance-*,clang-diagnostic-*,clang-analyzer-*,modernize-*,readability-*'
-WarningsAsErrors: ''
-HeaderFilterRegex: ''
-AnalyzeTemporaryDtors: false
+Checks:          'bugprone-*,cert-*,cppcoreguidelines-*,performance-*,clang-diagnostic-*,clang-analyzer-*,modernize-*,readability-*,concurrency-*,-readability-magic-numbers'
+WarningsAsErrors: '*,-readability-identifier-length,-cppcoreguidelines-pro-bounds-pointer-arithmetic'
+HeaderFilterRegex: '(src/|brace_checker/)'
 FormatStyle:     none
-User:            hihip
 CheckOptions:
   - key:             google-readability-braces-around-statements.ShortStatementLines
     value:           '1'
@@ -26,5 +24,9 @@ CheckOptions:
     value:           llvm
   - key:             modernize-use-nullptr.NullMacros
     value:           'NULL'
+  - key:             readability-identifier-length.MinimumVariableNameLength
+    value:           '3'
+  - key:             cppcoreguidelines-init-variables.IncludeStyle
+    value:           llvm
 ...
 

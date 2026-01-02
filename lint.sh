@@ -1,1 +1,1 @@
-clang-tidy -header-filter=.* -p build **/*.cpp
+clang-tidy -header-filter=.* -p .build **/*.cpp
