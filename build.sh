@@ -1,6 +1,8 @@
 #/bin/bash
+if [ ! -d ".build" ]; then
+    mkdir -p .build
+fi
 
-conan install . --output-folder=build --build=missing
-cd build
-cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
+cd .build
+cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake   
 cmake --build .

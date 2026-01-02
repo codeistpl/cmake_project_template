@@ -41,8 +41,8 @@ auto is_closing_brace(const char &character) -> bool {
  * @return True if the characters form an open-close brace pair, false
  * otherwise.
  */
-auto is_open_close_brace_pair(const char &opening, const char &closing)
-    -> bool {
+auto is_open_close_brace_pair(const char &opening,
+                              const char &closing) -> bool {
     if (opening == '{' && closing == '}') {
         return true;
     }

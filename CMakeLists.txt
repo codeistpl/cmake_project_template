@@ -10,3 +10,8 @@ SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
 enable_testing()
 add_subdirectory(brace_checker)
+
+add_custom_target(format
+  COMMAND find ${CMAKE_CURRENT_SOURCE_DIR} -regex '.*\\.\\(cpp\\|h\\|hpp\\)' -exec clang-format -style=file -i {} \;
+  COMMENT "Running clang-format on C++ source files"
+)
