@@ -20,10 +20,9 @@ make test
 
 # Generate coverage report
 echo "Generating coverage report..."
-gcovr -r .. --object-dir=. --print-summary --html-details coverage.html
+gcovr -r .. --object-dir=. --print-summary --html-details coverage.html --exclude='.*test\.cpp' --exclude='.*mock\.(cpp|h)'
 echo ""
 echo "=== Coverage Summary ==="
-gcovr -r .. --object-dir=.
+gcovr -r .. --object-dir=. --exclude='.*test\.cpp' --exclude='.*mock\.(cpp|h)'
 echo ""
 echo "Coverage report generated: .build/coverage.html"
-
