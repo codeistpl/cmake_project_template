@@ -8,6 +8,10 @@
 
 namespace cmd_parser {
 
+namespace detail {
+class ArgumentParserImpl;
+}
+
 enum class ParseStatus : uint8_t { OK = 0, HELP_REQUESTED };
 
 /**
@@ -24,6 +28,8 @@ class ParsedArgs {
 
   private:
     friend class ArgumentParser;
+    friend class detail::ArgumentParserImpl;
+
     std::map<std::string, std::string> values_;
     std::map<std::string, bool> flags_;
     std::map<std::string, std::vector<std::string>> lists_;

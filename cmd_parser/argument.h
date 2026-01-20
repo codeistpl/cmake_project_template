@@ -7,6 +7,10 @@
 
 namespace cmd_parser {
 
+namespace detail {
+class ArgumentParserImpl;
+}
+
 /**
  * Represents an argument definition
  */
@@ -37,6 +41,7 @@ class Argument {
 
   private:
     friend class ArgumentParser;
+    friend class detail::ArgumentParserImpl;
 
     std::string name_;
     std::string short_name_;

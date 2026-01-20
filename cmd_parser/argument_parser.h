@@ -10,6 +10,10 @@
 
 namespace cmd_parser {
 
+namespace detail {
+class ArgumentParserImpl;
+}
+
 /**
  * Python-style command-line argument parser
  *
@@ -27,6 +31,13 @@ namespace cmd_parser {
 class ArgumentParser {
   public:
     ArgumentParser(std::string program_name, std::string description = "");
+    ~ArgumentParser();
+
+    // Disable copy, enable move
+    ArgumentParser(const ArgumentParser &) = delete;
+    auto operator=(const ArgumentParser &) -> ArgumentParser & = delete;
+    ArgumentParser(ArgumentParser &&) noexcept;
+    auto operator=(ArgumentParser &&) noexcept -> ArgumentParser &;
 
     // Add a positional argument
     auto add_argument(const std::string &name,
@@ -49,38 +60,7 @@ class ArgumentParser {
     [[nodiscard]] auto get_help() const -> std::string;
 
   private:
-    std::string program_name;
-    std::string description;
-    std::vector<std::shared_ptr<Argument>> arguments;
-    std::map<std::string, std::shared_ptr<Argument>> arg_map;
-
-    auto register_argument(const std::shared_ptr<Argument> &arg) -> void;
-    [[nodiscard]] auto
-    find_argument(const std::string &name) const -> std::shared_ptr<Argument>;
-
-    static auto validate_choices(const Argument &arg,
-                                 const std::string &value) -> void;
-
-    // Helper methods for get_help()
-    [[nodiscard]] auto build_usage_line() const -> std::string;
-    [[nodiscard]] auto build_positional_section() const -> std::string;
-    [[nodiscard]] auto build_optional_section() const -> std::string;
-    static auto
-    format_choices(const std::vector<std::string> &choices) -> std::string;
-
-    // Helper methods for parse_args()
-    [[nodiscard]] auto collect_positional_arguments() const
-        -> std::vector<std::shared_ptr<Argument>>;
-    auto process_optional_or_flag(const std::string &arg,
-                                  const std::vector<std::string> &args,
-                                  size_t &size,
-                                  ParsedArgs &result) const -> void;
-    static auto process_positional_argument(
-        const std::string &arg,
-        const std::vector<std::shared_ptr<Argument>> &positional_args,
-        size_t &positional_index, ParsedArgs &result) -> void;
-
-    auto apply_defaults_and_validate(ParsedArgs &result) const -> void;
+    std::unique_ptr<detail::ArgumentParserImpl> pimpl_;
 };
 
 } // namespace cmd_parser

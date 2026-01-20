@@ -1,6 +1,6 @@
 get_filename_component(MODULE_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 
-file(GLOB SRC ./*.cpp)
+file(GLOB_RECURSE SRC ./*.cpp)
 file(GLOB TESTS ./*_test.cpp)
 file(GLOB MOCKS ./*_mock.cpp)
 
