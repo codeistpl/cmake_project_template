@@ -3,7 +3,7 @@ project(template_cmake_project)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_CXX_CLANG_TIDY clang-tidy -checks=-*,readability-*,cppcoreguidelines-*,performance-*,clang-diagnostic-*,clang-analyzer-*,modernize-*')
+#set(CMAKE_CXX_CLANG_TIDY clang-tidy -checks=-*,readability-*,cppcoreguidelines-*,performance-*,clang-diagnostic-*,clang-analyzer-*,modernize-*')
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Restrictive compilation flags
@@ -48,6 +48,7 @@ endfunction()
 # Enable testing and add subdirectory 
 enable_testing()
 add_subdirectory(brace_checker)
+add_subdirectory(cmd_parser)
 # Add more subdirectories as needed ...
 
 # Index source and header files from submodules

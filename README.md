@@ -26,6 +26,8 @@ $ cmake --build .
 - **Avoid meta names like \"manager\"**
 - **Use only commonly agreed shortcuts**
 
+- **Use trailing type function notation**
+
 **Commonly Used Abbreviations**
 
 The following abbreviations are approved for use in this project:
