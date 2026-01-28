@@ -14,6 +14,7 @@ message("mocks:\t " ${MOCKS})
 
 add_library(${MODULE_NAME} STATIC ${SRC})
 add_executable(${MODULE_NAME}_tests ${TESTS})
+add_executable(${MODULE_NAME}_example ${SRC} ${CMAKE_CURRENT_SOURCE_DIR}/example.cpp)
 
 find_package(Threads REQUIRED)
 find_package(GTest REQUIRED)

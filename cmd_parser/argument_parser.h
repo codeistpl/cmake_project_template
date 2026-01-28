@@ -1,5 +1,4 @@
-#ifndef CMD_PARSER_ARGUMENT_PARSER_H
-#define CMD_PARSER_ARGUMENT_PARSER_H
+#pragma once
 
 #include "argument.h"
 #include "parsed_args.h"
@@ -21,8 +20,8 @@ class ArgumentParserImpl;
  *   ArgumentParser parser("my_program", "Description of my program");
  *   parser.add_argument("input", "Input file path");
  *   parser.add_argument("-o", "--output", "Output file
- * path").default_value("output.txt"); parser.add_argument("-v", "--verbose",
- * "Verbose output").flag();
+ * path").default_value("output.txt");
+ *   parser.add_argument("-v", "--verbose","Verbose output").flag();
  *
  *   auto args = parser.parse_args(argc, argv);
  *   std::string input = args.get("input");
@@ -64,5 +63,3 @@ class ArgumentParser {
 };
 
 } // namespace cmd_parser
-
-#endif // CMD_PARSER_ARGUMENT_PARSER_H

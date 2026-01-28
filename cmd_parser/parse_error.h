@@ -1,5 +1,4 @@
-#ifndef CMD_PARSER_PARSE_ERROR_H
-#define CMD_PARSER_PARSE_ERROR_H
+#pragma once
 
 #include <stdexcept>
 #include <string>
@@ -16,5 +15,3 @@ class ParseError : public std::runtime_error {
 };
 
 } // namespace cmd_parser
-
-#endif // CMD_PARSER_PARSE_ERROR_H

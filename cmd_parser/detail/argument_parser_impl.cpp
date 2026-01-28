@@ -114,11 +114,11 @@ auto ArgumentParserImpl::apply_defaults_and_validate(ParsedArgs &result) const
     -> void {
     for (const auto &arg : arguments) {
         if (arg->type() == Argument::Type::FLAG) {
-            if (!result.flags_.contains(arg->name())) {
+            if (result.flags_.find(arg->name()) == result.flags_.end()) {
                 result.flags_[arg->name()] = false;
             }
         } else {
-            if (result.values_.contains(arg->name())) {
+            if (result.values_.find(arg->name()) != result.values_.end()) {
                 continue;
             }
 

@@ -18,7 +18,8 @@ auto ParsedArgs::get_flag(const std::string &name) const -> bool {
 }
 
 auto ParsedArgs::has(const std::string &name) const -> bool {
-    return values_.contains(name) || flags_.contains(name);
+    return values_.find(name) != values_.end() ||
+           flags_.find(name) != flags_.end();
 }
 
 auto ParsedArgs::get_list(const std::string &name) const
