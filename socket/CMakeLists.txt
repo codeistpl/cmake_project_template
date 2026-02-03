@@ -12,8 +12,10 @@ message("src:\t " ${SRC})
 message("tests:\t " ${TESTS})
 message("mocks:\t " ${MOCKS})
 
-add_executable(socket_client client_main.cpp socket.cpp)
-add_executable(socket_server server_main.cpp socket.cpp)
+add_executable(socket_client client_main.cpp socket.cpp connected_socket.cpp
+               bound_socket.cpp)
+add_executable(socket_server server_main.cpp socket.cpp connected_socket.cpp
+               bound_socket.cpp)
 
 # add_library(${MODULE_NAME} STATIC ${SRC})
 # add_executable(${MODULE_NAME}_tests ${TESTS})
