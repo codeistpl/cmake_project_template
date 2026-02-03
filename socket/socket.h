@@ -1,10 +1,27 @@
 #pragma once
 
+#include <array>
 #include <cstddef>
 #include <cstdint>
+#include <cstring>
 #include <string>
 
 namespace net {
+
+struct SocketError {
+    int code = 0;
+    std::string message;
+};
+
+inline auto errno_to_string(int err) -> std::string {
+    if (err == 0) {
+        return "no error";
+    }
+    constexpr std::size_t buffer_size = 256;
+    std::array<char, buffer_size> buffer = {};
+    const char *msg = strerror_r(err, buffer.data(), buffer.size());
+    return msg;
+}
 
 class Socket {
   public:

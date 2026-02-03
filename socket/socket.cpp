@@ -1,4 +1,5 @@
 #include "socket.h"
+#include "connected_socket.h"
 
 #include <netdb.h>
 #include <sys/socket.h>
@@ -67,7 +68,8 @@ auto Socket::close() -> void {
     }
 }
 
-auto Socket::connect(const std::string &host, std::uint16_t port) -> bool {
+auto Socket::connect(const std::string &host,
+                     std::uint16_t port) -> SocketError {
     addrinfo hints{};
     hints.ai_family = AF_UNSPEC;
     hints.ai_socktype = to_sock_type(type_);
@@ -76,7 +78,8 @@ auto Socket::connect(const std::string &host, std::uint16_t port) -> bool {
     addrinfo *result = nullptr;
     std::string port_str = port_to_string(port);
     if (::getaddrinfo(host.c_str(), port_str.c_str(), &hints, &result) != 0) {
-        return false;
+        return SocketError{1, errno ? errno_to_string(errno)
+                                    : "unknown error while getaddrinfo failed"};
     }
 
     bool connected = false;
