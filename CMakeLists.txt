@@ -49,6 +49,7 @@ endfunction()
 enable_testing()
 add_subdirectory(brace_checker)
 add_subdirectory(cmd_parser)
+add_subdirectory(socket)
 # Add more subdirectories as needed ...
 
 # Index source and header files from submodules
