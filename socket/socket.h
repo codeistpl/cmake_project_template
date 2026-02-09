@@ -4,9 +4,13 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstring>
+#include <optional>
 #include <string>
 
 namespace net {
+
+class BoundSocket;     // Forward declaration
+class ConnectedSocket; // Forward declaration
 
 struct SocketError {
     int code = 0;
@@ -45,13 +49,14 @@ class Socket {
     auto close() -> void;
 
     // Client-side methods
-    auto connect(const std::string &host, std::uint16_t port) -> SocketError;
+    auto connect(const std::string &host,
+                 std::uint16_t port) -> std::optional<ConnectedSocket>;
     auto send(const void *data, std::size_t len) const -> std::ptrdiff_t;
-    auto send(const std::string &data) const -> std::ptrdiff_t;
+    [[nodiscard]] auto send(const std::string &data) const -> std::ptrdiff_t;
 
     // Server-side methods
-    auto bind(std::uint16_t port,
-              const std::string &address = "0.0.0.0") -> bool;
+    auto bind(std::uint16_t port, const std::string &address = "0.0.0.0")
+        -> std::optional<BoundSocket>;
     auto listen(int backlog = 1) -> bool;
     auto accept() -> Socket;
     auto recv(void *buffer, std::size_t len) const -> std::ptrdiff_t;

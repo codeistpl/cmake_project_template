@@ -1,4 +1,5 @@
 #include "socket.h"
+#include "bound_socket.h"
 #include "connected_socket.h"
 
 #include <netdb.h>
@@ -69,7 +70,7 @@ auto Socket::close() -> void {
 }
 
 auto Socket::connect(const std::string &host,
-                     std::uint16_t port) -> SocketError {
+                     std::uint16_t port) -> std::optional<ConnectedSocket> {
     addrinfo hints{};
     hints.ai_family = AF_UNSPEC;
     hints.ai_socktype = to_sock_type(type_);
@@ -78,8 +79,7 @@ auto Socket::connect(const std::string &host,
     addrinfo *result = nullptr;
     std::string port_str = port_to_string(port);
     if (::getaddrinfo(host.c_str(), port_str.c_str(), &hints, &result) != 0) {
-        return SocketError{1, errno ? errno_to_string(errno)
-                                    : "unknown error while getaddrinfo failed"};
+        return std::nullopt;
     }
 
     bool connected = false;
@@ -110,12 +110,9 @@ auto Socket::connect(const std::string &host,
     }
 
     ::freeaddrinfo(result);
-    SocketError err =
-        connected
-            ? SocketError{0, ""}
-            : SocketError{1, errno ? errno_to_string(errno)
-                                   : "unknown error while connect failed"};
-    return err;
+    return connected ? std::optional<ConnectedSocket>(
+                           ConnectedSocket(std::move(*this)))
+                     : std::nullopt;
 }
 
 auto Socket::send(const void *data, std::size_t len) const -> std::ptrdiff_t {
@@ -129,7 +126,8 @@ auto Socket::send(const std::string &data) const -> std::ptrdiff_t {
     return send(data.data(), data.size());
 }
 
-auto Socket::bind(std::uint16_t port, const std::string &address) -> bool {
+auto Socket::bind(std::uint16_t port,
+                  const std::string &address) -> std::optional<BoundSocket> {
     addrinfo hints{};
     hints.ai_family = AF_UNSPEC;
     hints.ai_socktype = to_sock_type(type_);
@@ -141,7 +139,7 @@ auto Socket::bind(std::uint16_t port, const std::string &address) -> bool {
     const char *addr = address.empty() ? nullptr : address.c_str();
 
     if (::getaddrinfo(addr, port_str.c_str(), &hints, &result) != 0) {
-        return false;
+        return std::nullopt;
     }
 
     bool bound = false;
@@ -176,7 +174,8 @@ auto Socket::bind(std::uint16_t port, const std::string &address) -> bool {
     }
 
     ::freeaddrinfo(result);
-    return bound;
+    return bound ? std::optional<BoundSocket>(BoundSocket(std::move(*this)))
+                 : std::nullopt;
 }
 
 auto Socket::listen(int backlog) -> bool {

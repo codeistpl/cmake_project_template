@@ -15,20 +15,14 @@ constexpr std::size_t kBufferSize = 1024;
 
 auto main() -> int {
     net::Socket server(net::Socket::Type::Tcp);
-    if (!server.bind(kPort, "127.0.0.1")) {
+    auto bound_server = server.bind(kPort, "127.0.0.1");
+    if (!bound_server) {
         std::cerr << "Failed to bind server socket." << '\n';
         return 1;
     }
-
-    net::BoundSocket bound_server(std::move(server), 1);
     std::cout << "Server listening on 127.0.0.1:" << kPort << '\n';
-    std::cout.flush();
-
     std::cout << "Waiting for client..." << '\n';
-    std::cout.flush();
-    net::ConnectedSocket client = bound_server.accept();
-    std::cout << "Client accepted" << '\n';
-    std::cout.flush();
+    net::ConnectedSocket client = bound_server->accept(); // blocking call
     if (!client.is_valid()) {
         std::cerr << "Failed to accept client connection." << '\n';
         return 1;
