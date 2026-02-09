@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <iostream>
 #include <string>
 
@@ -20,29 +21,30 @@ auto main() -> int {
 
     net::ConnectedSocket connected(std::move(socket));
     if (!connected.is_valid()) {
-        std::cerr << "Invalid connected socket." << std::endl;
+        std::cerr << "Invalid connected socket." << "\n";
         return 1;
     }
 
-    std::cout << "Sending message..." << std::endl;
+    std::cout << "Sending message..." << "\n";
     std::cout.flush();
 
     const std::string message = "hello world";
     auto bytes_sent = connected.send(message);
     if (bytes_sent < 0) {
-        std::cerr << "Failed to send message." << std::endl;
+        std::cerr << "Failed to send message." << "\n";
         return 1;
     }
 
-    std::cout << "Sent: " << message << std::endl;
+    std::cout << "Sent: " << message << "\n";
 
     std::string reply;
-    auto bytes_read = connected.recv(reply, 1024);
+    constexpr std::size_t reply_capacity = 1024;
+    auto bytes_read = connected.recv(reply, reply_capacity);
     if (bytes_read < 0) {
-        std::cerr << "Failed to receive reply." << std::endl;
+        std::cerr << "Failed to receive reply." << "\n";
         return 1;
     }
 
-    std::cout << "Received: " << reply << std::endl;
+    std::cout << "Received: " << reply << "\n";
     return 0;
 }

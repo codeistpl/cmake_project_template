@@ -1,6 +1,6 @@
 ---
-Checks:          'bugprone-*,cert-*,cppcoreguidelines-*,performance-*,clang-diagnostic-*,clang-analyzer-*,modernize-*,readability-*,concurrency-*,-readability-magic-numbers,-bugprone-easily-swappable-parameters'
-WarningsAsErrors: '*,-readability-identifier-length,-cppcoreguidelines-pro-bounds-pointer-arithmetic'
+Checks:          'bugprone-*,cert-*,cppcoreguidelines-*,performance-*,clang-diagnostic-*,clang-analyzer-*,modernize-*,readability-*,concurrency-*,-bugprone-easily-swappable-parameters, -readability-identifier-length'
+WarningsAsErrors: '*'
 HeaderFilterRegex: '(src/|brace_checker/)'
 FormatStyle:     none
 CheckOptions:

@@ -4,8 +4,7 @@
 #include <iomanip>
 #include <sstream>
 
-namespace cmd_parser {
-namespace detail {
+namespace cmd_parser::detail {
 
 // Constants
 constexpr int HELP_COLUMN_WIDTH = 20;
@@ -256,5 +255,4 @@ auto ArgumentParserImpl::format_choices(const std::vector<std::string> &choices)
     return oss.str();
 }
 
-} // namespace detail
-} // namespace cmd_parser
+} // namespace cmd_parser::detail
