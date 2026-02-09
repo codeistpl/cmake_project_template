@@ -12,8 +12,9 @@ constexpr std::uint16_t kPort = 9090;
 
 auto main() -> int {
     net::Socket socket(net::Socket::Type::Tcp);
-    if (!socket.connect("127.0.0.1", kPort)) {
-        std::cerr << "Failed to connect to server." << std::endl;
+    auto err = socket.connect("127.0.0.1", kPort);
+    if (err.code != 0) {
+        std::cerr << "Failed to connect to server: " + err.message << "\n";
         return 1;
     }
 

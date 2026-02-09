@@ -7,11 +7,6 @@ file(GLOB MOCKS ./*_mock.cpp)
 list(REMOVE_ITEM SRC ${TESTS})
 list(REMOVE_ITEM SRC ${MOCKS})
 
-message("Module: " ${MODULE_NAME})
-message("src:\t " ${SRC})
-message("tests:\t " ${TESTS})
-message("mocks:\t " ${MOCKS})
-
 add_library(${MODULE_NAME} STATIC ${SRC})
 add_executable(${MODULE_NAME}_tests ${TESTS})
 

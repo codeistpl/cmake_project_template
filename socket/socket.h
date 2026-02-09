@@ -45,7 +45,7 @@ class Socket {
     auto close() -> void;
 
     // Client-side methods
-    auto connect(const std::string &host, std::uint16_t port) -> bool;
+    auto connect(const std::string &host, std::uint16_t port) -> SocketError;
     auto send(const void *data, std::size_t len) -> std::ptrdiff_t;
     auto send(const std::string &data) -> std::ptrdiff_t;
 

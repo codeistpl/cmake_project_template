@@ -55,9 +55,6 @@ add_subdirectory(socket)
 # Index source and header files from submodules
 index_sources_from_submodule(_sources_str _headers_str)
 
-message(STATUS "Source files: ${_sources_str}")
-message(STATUS "Header files: ${_headers_str}")
-
 add_custom_target(format
   COMMAND clang-format -style=file -i ${_sources_str} ${_headers_str}
   COMMENT "Running clang-format on C++ source files ${_sources_str} and header files ${_headers_str}"

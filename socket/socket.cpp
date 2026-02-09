@@ -110,7 +110,12 @@ auto Socket::connect(const std::string &host,
     }
 
     ::freeaddrinfo(result);
-    return connected;
+    SocketError err =
+        connected
+            ? SocketError{0, ""}
+            : SocketError{1, errno ? errno_to_string(errno)
+                                   : "unknown error while connect failed"};
+    return err;
 }
 
 auto Socket::send(const void *data, std::size_t len) -> std::ptrdiff_t {

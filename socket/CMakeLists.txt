@@ -7,11 +7,6 @@ file(GLOB MOCKS ./*_mock.cpp)
 list(REMOVE_ITEM SRC ${TESTS})
 list(REMOVE_ITEM SRC ${MOCKS})
 
-message("Module: " ${MODULE_NAME})
-message("src:\t " ${SRC})
-message("tests:\t " ${TESTS})
-message("mocks:\t " ${MOCKS})
-
 add_executable(socket_client client_main.cpp socket.cpp connected_socket.cpp
                bound_socket.cpp)
 add_executable(socket_server server_main.cpp socket.cpp connected_socket.cpp
