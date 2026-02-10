@@ -51,18 +51,17 @@ class Socket {
     // Client-side methods
     auto connect(const std::string &host,
                  std::uint16_t port) -> std::optional<ConnectedSocket>;
-    auto send(const void *data, std::size_t len) const -> std::ptrdiff_t;
-    [[nodiscard]] auto send(const std::string &data) const -> std::ptrdiff_t;
 
     // Server-side methods
     auto bind(std::uint16_t port, const std::string &address = "0.0.0.0")
         -> std::optional<BoundSocket>;
     auto listen(int backlog = 1) -> bool;
     auto accept() -> Socket;
-    auto recv(void *buffer, std::size_t len) const -> std::ptrdiff_t;
-    auto recv(std::string &out, std::size_t max_len) const -> std::ptrdiff_t;
 
   private:
+    friend class BoundSocket;
+    friend class ConnectedSocket;
+
     explicit Socket(int fd, Type type);
 
     int sock_fd_;

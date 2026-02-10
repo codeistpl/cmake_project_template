@@ -115,17 +115,6 @@ auto Socket::connect(const std::string &host,
                      : std::nullopt;
 }
 
-auto Socket::send(const void *data, std::size_t len) const -> std::ptrdiff_t {
-    if (sock_fd_ < 0) {
-        return -1;
-    }
-    return ::send(sock_fd_, data, len, MSG_NOSIGNAL);
-}
-
-auto Socket::send(const std::string &data) const -> std::ptrdiff_t {
-    return send(data.data(), data.size());
-}
-
 auto Socket::bind(std::uint16_t port,
                   const std::string &address) -> std::optional<BoundSocket> {
     addrinfo hints{};
@@ -196,28 +185,6 @@ auto Socket::accept() -> Socket {
     }
 
     return Socket(client_fd, type_);
-}
-
-auto Socket::recv(void *buffer, std::size_t len) const -> std::ptrdiff_t {
-    if (sock_fd_ < 0) {
-        return -1;
-    }
-    return ::recv(sock_fd_, buffer, len, 0);
-}
-
-auto Socket::recv(std::string &out,
-                  std::size_t max_len) const -> std::ptrdiff_t {
-    out.clear();
-    if (max_len == 0) {
-        return 0;
-    }
-
-    std::vector<char> buffer(max_len);
-    auto bytes = recv(buffer.data(), buffer.size());
-    if (bytes > 0) {
-        out.assign(buffer.data(), static_cast<std::size_t>(bytes));
-    }
-    return bytes;
 }
 
 } // namespace net

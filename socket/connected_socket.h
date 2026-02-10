@@ -10,6 +10,7 @@ namespace net {
 class ConnectedSocket {
   public:
     explicit ConnectedSocket(Socket &&socket);
+    explicit ConnectedSocket(int fd, Socket::Type type) noexcept;
 
     ConnectedSocket(const ConnectedSocket &) = delete;
     auto operator=(const ConnectedSocket &) -> ConnectedSocket & = delete;
@@ -23,10 +24,11 @@ class ConnectedSocket {
     [[nodiscard]] auto fd() const -> int;
     auto close() -> void;
 
-    auto send(const void *data, std::size_t len) -> std::ptrdiff_t;
-    auto send(const std::string &data) -> std::ptrdiff_t;
-    auto recv(void *buffer, std::size_t len) -> std::ptrdiff_t;
-    auto recv(std::string &out, std::size_t max_len) -> std::ptrdiff_t;
+    [[nodiscard]] auto send(const void *data,
+                            std::size_t len) const -> std::ptrdiff_t;
+    [[nodiscard]] auto send(const std::string &data) const -> std::ptrdiff_t;
+    auto recv(void *buffer, std::size_t len) const -> std::ptrdiff_t;
+    auto recv(std::string &out, std::size_t max_len) const -> std::ptrdiff_t;
 
   private:
     Socket socket_;
