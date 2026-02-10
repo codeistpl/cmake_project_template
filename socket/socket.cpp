@@ -167,24 +167,4 @@ auto Socket::bind(std::uint16_t port,
                  : std::nullopt;
 }
 
-auto Socket::listen(int backlog) -> bool {
-    if (type_ != Type::Tcp || sock_fd_ < 0) {
-        return false;
-    }
-    return ::listen(sock_fd_, backlog) == 0;
-}
-
-auto Socket::accept() -> Socket {
-    if (type_ != Type::Tcp || sock_fd_ < 0) {
-        return {};
-    }
-
-    int client_fd = ::accept(sock_fd_, nullptr, nullptr);
-    if (client_fd < 0) {
-        return {};
-    }
-
-    return Socket(client_fd, type_);
-}
-
 } // namespace net

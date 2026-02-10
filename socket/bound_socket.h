@@ -24,6 +24,7 @@ class BoundSocket {
     [[nodiscard]] auto fd() const -> int;
     auto close() -> void;
 
+    auto listen(int backlog = 1) -> bool;
     auto accept() -> ConnectedSocket;
 
   private:

@@ -55,8 +55,6 @@ class Socket {
     // Server-side methods
     auto bind(std::uint16_t port, const std::string &address = "0.0.0.0")
         -> std::optional<BoundSocket>;
-    auto listen(int backlog = 1) -> bool;
-    auto accept() -> Socket;
 
   private:
     friend class BoundSocket;

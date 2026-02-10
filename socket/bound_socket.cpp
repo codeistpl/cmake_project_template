@@ -3,11 +3,14 @@
 #include "connected_socket.h"
 #include "socket.h"
 
+#include <sys/socket.h>
+#include <unistd.h>
+
 namespace net {
 
 BoundSocket::BoundSocket(Socket &&socket, int backlog)
     : socket_(std::move(socket)) {
-    socket_.listen(backlog);
+    listen(backlog);
 }
 
 BoundSocket::BoundSocket(BoundSocket &&other) noexcept
@@ -26,8 +29,24 @@ auto BoundSocket::fd() const -> int { return socket_.fd(); }
 
 auto BoundSocket::close() -> void { socket_.close(); }
 
+auto BoundSocket::listen(int backlog) -> bool {
+    if (socket_.type_ != Socket::Type::Tcp || socket_.sock_fd_ < 0) {
+        return false;
+    }
+    return ::listen(socket_.sock_fd_, backlog) == 0;
+}
+
 auto BoundSocket::accept() -> ConnectedSocket {
-    return ConnectedSocket(socket_.accept());
+    if (socket_.type_ != Socket::Type::Tcp || socket_.sock_fd_ < 0) {
+        return ConnectedSocket(Socket());
+    }
+
+    int client_fd = ::accept(socket_.sock_fd_, nullptr, nullptr);
+    if (client_fd < 0) {
+        return ConnectedSocket(Socket());
+    }
+
+    return ConnectedSocket(client_fd, socket_.type_);
 }
 
 } // namespace net
