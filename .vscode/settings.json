@@ -1,8 +1,11 @@
 {
+    "files.autoSave": "onFocusChange",
+
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
     "editor.formatOnSaveMode": "modificationsIfAvailable",
-    "files.autoSave": "onFocusChange",
     "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
     "editor.fontLigatures": true,
+    
+    "gitlens.signing.showSignatureBadges": true,
 }
