@@ -14,10 +14,11 @@ $ cmake --build .
 
 **Naming Conventions**
 - **Classes and Types**: Use `PascalCase` (e.g., `BraceChecker`, `MyClass`)
+- **Free functions and Static member functions**: Use `PascalCase`
 - **Functions and Methods**: Use `snake_case` (e.g., `is_valid()`, `check_braces()`)
 - **Variables**: Use `snake_case` (e.g., `input_string`, `max_count`)
-- **Constants**: Use `UPPER_SNAKE_CASE` (e.g., `MAX_SIZE`, `DEFAULT_TIMEOUT`)
-- **Priate Members**: Use `snake_case_with_floor_` (e.g., `internal_buffer_`, `count_`)
+- **Global Constants**: Use `UPPER_SNAKE_CASE` (e.g., `MAX_SIZE`, `DEFAULT_TIMEOUT`)
+- **Members**: Use `snake_case_with_floor_` (e.g., `internal_buffer_`, `count_`)
 - **File Names**: Use `snake_case` (e.g., `brace_checker.cpp`, `brace_checker.h`)
 
 - **Avoid prefixes and postfixes**
@@ -27,6 +28,25 @@ $ cmake --build .
 - **Use only commonly agreed shortcuts**
 
 - **Use trailing type function notation**
+- **setters and getters** shall be noexcept
+- **functions not returning `void`** shall be `[[no-discard]]`
+
+```cpp
+
+const std::string_view GLOBAL_CONSTANT = "global constant"
+auto FreeFunction() -> void;
+
+class MyClass {
+    public:
+        auto member_function(std::string parameter_name = GLOBAL_CONSTANT) -> void;
+        static auto MemberFunction() -> void;
+        [[no-discard]] auto get_data_member() noexcept -> int;
+        auto set_data_member() noexcept -> void;
+    private:
+        int data_member_;
+};
+
+```
 
 **Commonly Used Abbreviations**
 
@@ -135,4 +155,3 @@ This project uses automated tools to enforce conventions:
 - `test.sh`: Runs unit tests to verify correctness
 ```
 
-### Coding Conventions
