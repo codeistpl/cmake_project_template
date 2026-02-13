@@ -17,7 +17,7 @@ $ cmake --build .
 - **Functions and Methods**: Use `snake_case` (e.g., `is_valid()`, `check_braces()`)
 - **Variables**: Use `snake_case` (e.g., `input_string`, `max_count`)
 - **Constants**: Use `UPPER_SNAKE_CASE` (e.g., `MAX_SIZE`, `DEFAULT_TIMEOUT`)
-- **Private Members**: Use `snake_case` (e.g., `internal_buffer`, `count`)
+- **Priate Members**: Use `snake_case_with_floor_` (e.g., `internal_buffer_`, `count_`)
 - **File Names**: Use `snake_case` (e.g., `brace_checker.cpp`, `brace_checker.h`)
 
 - **Avoid prefixes and postfixes**
